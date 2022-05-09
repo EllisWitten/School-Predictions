@@ -37,8 +37,9 @@ def validate_name(data):
     Check the name entered to make sure that only etters and spaces are entered
     """
     name = data[0]
-    if name.isalpha() == True:
-        print(f'{name} is a vlaid name')
+    print(f'this is your name:{name}')
+    if all(letter.isalpha() or letter.isspace() for letter in name):
+        print(f'{name} is a valid name')
         return True
     else:
         print(f'{name} is invalid, must only contain letters')
@@ -50,8 +51,9 @@ def validate_grades(data):
     Check the list contains 6 items
     """
     grades = data[1]
+    for x in range(len(grades)):
+        print(x)
     return True
-
 
 def main():
     student = get_student_grades(data)
