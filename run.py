@@ -25,12 +25,14 @@ def get_student_grades(data):
         print('Enter your name and grades to find out what college to aplly for.\n')
         student_name = input('Enter your name here (example:John Smith):\n')
         print('Your grades should be entered as so; English, Maths, Science, Option1, Option2, Option3\n')
-        student_grades = [input('Please enter your grades here:')]
+        student_grades_inp = input('Please enter your grades here:')
+        student_grades = student_grades_inp.split(',')
         student_info = [student_name,student_grades]
         
         if validate_name(student_info) and validate_grades(student_info):
             print('Data is valid')
             break
+    return (student_info)
 
 def validate_name(data):
     """
@@ -47,13 +49,14 @@ def validate_name(data):
 
 def validate_grades(data):
     """
-    Check the grades to make sure only letters between A and F have been entered.
-    Check the list contains 6 items
+    Check the list contains 6 items.
     """
     grades = data[1]
-    for x in range(len(grades)):
-        print(x)
-    return True
+    if len(grades) == 6:
+        print('Grades are valid')
+        return True
+    else:
+        print('Grades are invlaid, please enter 6 letters seperated by commas')
 
 def main():
     student = get_student_grades(data)
