@@ -58,7 +58,17 @@ def validate_grades(data):
     else:
         print('Grades are invlaid, please enter 6 letters seperated by commas')
 
+def update_worksheet(data, worksheet):
+    student_info = [data[0].capitalize()]
+    for x in data[1]:
+        student_info.append(x.capitalize())
+    print(student_info)
+    print(f'Updating {worksheet.capitalize()} worksheet...\n')
+    spec_worksheet = SHEET.worksheet(worksheet)
+    spec_worksheet.append_row(student_info)
+    print(f'{worksheet.capitalize()} worksheet updated successfully.\n')
+
 def main():
     student = get_student_grades(data)
-
+    update_worksheet(student, 'grades')
 main()
